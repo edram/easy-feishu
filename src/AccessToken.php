@@ -49,11 +49,6 @@ class AccessToken implements AccessTokenInterface
         return $this->key ?? $this->key = sprintf('feishu.access_token.%s', $this->appId);
     }
 
-    public function toQuery(): array
-    {
-        return ['access_token' => $this->getToken()];
-    }
-
     public function refresh(): string
     {
         $response = $this->httpClient->request('POST', self::ENDPOINT_URL, [
